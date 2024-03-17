@@ -100,8 +100,8 @@ body{
 .charlist{
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
-    width: 700px;
+    margin: 30px auto;
+    width: 1300px;
     gap: 10px;
 }
 .card{
@@ -187,7 +187,7 @@ body{
 #create-char{
     display: flex;
     background-color: #F2F4F3;
-    margin: 15px auto;
+    margin: 30px auto;
     border-radius: 5px;
     width: 970px;
     border: 1px solid #ccc;
@@ -341,6 +341,7 @@ body{
     transition: background-color 0.3s ease;
     padding-block: 1px;
     padding-inline: 6px;
+    margin-left: 4px;
 }
 .fake{
     width: 80px;
