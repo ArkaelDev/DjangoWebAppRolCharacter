@@ -24,6 +24,10 @@
         <div><img id="d20" src="../static/img/d20.webp"></div></div>
     </section>
     <section id="textboxes">
+<div class="fake"></div>
+</div>
+        <div class="textareadiv" ><label for="inventory-form" class="textarealabel" >Inventory: </label><p class="textarea-display">{{char.inventory}}</p></div>
+        <div class="textareadiv" ><label for="description-form" class="textarealabel" >Description: </label><p class="textarea-display">{{char.description}}</p></div>
         <div id="lvlhp" ><div class="number-div"><label for="hitpoints-form" class="atributes-label">Hitpoints: </label><div class="number-display" >{{char.hitpoints}}</div></div>
         <div class="number-div"><label for="level-form" class="atributes-label">Level: </label><div class="number-display" >{{char.level}}</div></div>
 {% if user.is_authenticated %}
@@ -37,10 +41,6 @@
 <button class="btn" name="copy" value="{{char.id}}">Copy Character</button>
 </form>
 {% endif %}
-<div class="fake"></div>
-</div>
-        <div class="textareadiv" ><label for="inventory-form" class="textarealabel" >Inventory: </label><p class="textarea-display">{{char.inventory}}</p></div>
-        <div class="textareadiv" ><label for="description-form" class="textarealabel" >Description: </label><p class="textarea-display">{{char.description}}</p></div>
     </section>
 </article>
 
