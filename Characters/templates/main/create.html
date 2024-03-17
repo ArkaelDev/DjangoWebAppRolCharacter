@@ -26,15 +26,15 @@
         <div><img alt="dice" id="d20" src="../static/img/d20.webp"></div></div>
     </section>
     <section id="textboxes">
+</div>
+        <div class="textareadiv" ><label for="inventory-form" class="textarealabel" >Inventory: </label>{{form.inventory}}</div>
+        <div class="textareadiv" ><label for="description-form" class="textarealabel" >Description: </label>{{form.description}}</div>
         <div id="lvlhp" ><div class="number-div"><label for="hitpoints-form" class="atributes-label">Hitpoints: </label>{{form.hitpoints}}</div>
         <div class="number-div"><label for="level-form" class="atributes-label">Level: </label>{{form.level}}</div>
         <div id="savebtn"><button class="btn" name="save" value="{{char.id}}">Save</button></div>
     {% if char %}
     <button class="btn" name="delete" value="{{char.id}}">Delete Character</button>
     {% endif %}
-</div>
-        <div class="textareadiv" ><label for="inventory-form" class="textarealabel" >Inventory: </label>{{form.inventory}}</div>
-        <div class="textareadiv" ><label for="description-form" class="textarealabel" >Description: </label>{{form.description}}</div>
     </section>
 </article>
     
