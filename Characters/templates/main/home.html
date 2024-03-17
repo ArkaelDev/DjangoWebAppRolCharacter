@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<main class="maincard">
+    <div>
+        <h1 id="welcome">Welcome to Rol For Managment</h1>
+    </div>
+    <div class="homeimg">
+        <div id="imgcontainer"><img id="homerogue" src="../static/img/rogue.webp" alt="" srcset=""></div>
+        <div id="textdes"><p>Fill a custom Character Sheet.</p>
+                          <p>Keep track of your Characters and update them.</p>
+                          <p>See other people's Characters.</p>
+                          <a id="start" href="{% url 'register' %}">Start your journey.</a>
+    </div>
+        </div>
+</main>
+{% endblock %}

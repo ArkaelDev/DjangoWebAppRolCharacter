@@ -1,0 +1,47 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<article id="create-char">
+    <section id="atributes">
+        <div class="number-div"><label for="strength-form" class="atributes-label">STRENGTH</label><div class="number-display" >{{char.strength}}</div></div>
+        <div class="number-div"><label for="dexterity-form" class="atributes-label">DEXTERITY</label><div class="number-display" >{{char.dexterity}}</div></div>
+        <div class="number-div"><label for="constitution-form" class="atributes-label">CONSTITUTION</label><div class="number-display" >{{char.constitution}}</div></div>
+        <div class="number-div"><label for="intelligence-form" class="atributes-label">INTELLIGENCE</label><div class="number-display" >{{char.intelligence}}</div></div>
+        <div class="number-div"><label for="wisdom-form" class="atributes-label">WISDOM</label><div class="number-display" >{{char.wisdom}}</div></div>
+        <div class="number-div"><label for="carisma-form" class="atributes-label">CARISMA</label><div class="number-display" >{{char.carisma}}</div></div>
+    </section>
+    <section id="text">
+        <label for="image-form" id="droparea">
+            {% if char.image %}
+            <img id="portrait" src="../static/img/{{char.image}}.svg" alt="character portrait">
+            {% else %}
+            <img id="portrait" src="../static/img/no_portrait.svg" style="width: 100px; height: 100px;" alt="character portrait">
+            {% endif %}</label>
+        <div id="textdiv"><div id="nametext" class="textdiv" ><label for="name-form" id="namelabel" class="textformlabel" >Name: </label><p class="text-display">{{char.name}}</p></div></div>
+        <div id="othertext"><div class="textdiv" ><label for="race-form" class="textformlabel" >Race: </label><p class="text-display">{{char.race}}</p></div>
+        <div class="textdiv" ><label for="classes-form"  class="textformlabel" >Classes: </label><p class="text-display">{{char.classes}}</p></div>
+        <div class="textdiv" ><label for="background-form"  class="textformlabel" >Background: </label><p class="text-display">{{char.background}}</p></div>
+        <div class="textdiv" ><label for="alignment-form"  class="textformlabel" >Alignment: </label><p class="text-display">{{char.alignment}}</p></div>
+        <div><img id="d20" src="../static/img/d20.webp"></div></div>
+    </section>
+    <section id="textboxes">
+        <div id="lvlhp" ><div class="number-div"><label for="hitpoints-form" class="atributes-label">Hitpoints: </label><div class="number-display" >{{char.hitpoints}}</div></div>
+        <div class="number-div"><label for="level-form" class="atributes-label">Level: </label><div class="number-display" >{{char.level}}</div></div>
+{% if user.is_authenticated %}
+<form id="buttons" method="POST" action="{% url 'create-char' %}">
+    {% csrf_token %}
+{% if char in  user.character.all %}
+<form method="POST" action="{% url 'create-char' %}">
+    {% csrf_token %}
+<button class="btn" name="edit" value="{{char.id}}">Edit Character</button>
+{% endif %}
+<button class="btn" name="copy" value="{{char.id}}">Copy Character</button>
+</form>
+{% endif %}
+<div class="fake"></div>
+</div>
+        <div class="textareadiv" ><label for="inventory-form" class="textarealabel" >Inventory: </label><p class="textarea-display">{{char.inventory}}</p></div>
+        <div class="textareadiv" ><label for="description-form" class="textarealabel" >Description: </label><p class="textarea-display">{{char.description}}</p></div>
+    </section>
+</article>
+
+{% endblock %}

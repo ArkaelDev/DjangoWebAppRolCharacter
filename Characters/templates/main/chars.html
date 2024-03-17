@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<ul class="charlist">
+    {% for char in user.character.all %}
+    <a class="card" href='/{{char.id}}'>
+            {% if char.image %}
+                <img class="cardimg" style=width:100px;height:100px src=../static/img/{{char.image}}.svg>
+            {% else %}
+            <img class="cardimg" style=width:100px;height:100px src=../static/img/user-circle.svg>
+            {% endif %}
+            <div class="card-name"><p class="cardtext">{{char.name}}</p></div>
+            <div class="card-description"><p class="cardtext">{{char.race}} {{char.classes}} Level: {{char.level}}</p><icon id="arrow">→</icon></div>
+</a>
+    {% endfor %}
+</ul>
+</div>
+{% endblock %}

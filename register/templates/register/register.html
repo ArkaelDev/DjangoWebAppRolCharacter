@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+
+{% block tittle %}Cuenta{% endblock %}
+
+{% block content %}
+<div class="login-card">
+    <div class="card-header">
+      <div class="log">Register</div></div>
+      {% if message %}
+    <p>{{message}}</p>
+    {% endif %}
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+      <div class="form-group">
+        <label class="labelregister" for="id_username">Username:</label>
+        {{form.username}}
+      </div>
+      <div class="form-group">
+        <label class="labelregister" for="id_password1" >Password:</label><br>{{form.password1}}
+      </div>
+      <div class="form-group">
+        <label class="labelregister" for="id_password2" >Confirm password:</label><br>{{form.password2}}
+      </div>
+      <div class="form-group">
+        <button class="loginbtn">Sign Up</button>
+      </div>
+    </form>
+  </div> 
+{% endblock %}

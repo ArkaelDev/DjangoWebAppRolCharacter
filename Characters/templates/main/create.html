@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<form class='form-group' method='post' enctype="multipart/form-data" action="{% url 'create-char' %}">
+    {% csrf_token %}
+    <article id="create-char">
+    <section id="atributes">
+        <div class="number-div"><label for="strength-form" class="atributes-label">STRENGTH</label>{{form.strength}}</div>
+        <div class="number-div"><label for="dexterity-form" class="atributes-label">DEXTERITY</label>{{form.dexterity}}</div>
+        <div class="number-div"><label for="constitution-form" class="atributes-label">CONSTITUTION</label>{{form.constitution}}</div>
+        <div class="number-div"><label for="intelligence-form" class="atributes-label">INTELLIGENCE</label>{{form.intelligence}}</div>
+        <div class="number-div"><label for="wisdom-form" class="atributes-label">WISDOM</label>{{form.wisdom}}</div>
+        <div class="number-div"><label for="carisma-form" class="atributes-label">CARISMA</label>{{form.carisma}}</div>
+    </section>
+    <section id="text">
+        <div>
+        {{form.image}}
+        <div id="imageview">
+            <label for="image-form">Select your icon<br>
+                <a style="color:#FAF2A1" href="https://thenounproject.com/browse/collection-icon/role-playing-game-ui-rpg-dnd-mtg-175203/?p=1" target="_blank" rel="noopener noreferrer nofollow"> Icons by Michelle Lukezic</a></b></label></div></div>
+        <div id="textdiv"><div id="nametext" class="textdiv" ><label for="name-form" id="namelabel" class="textformlabel" >Name: </label>{{form.name}}</div></div>
+        <div id="othertext"><div class="textdiv" ><label for="race-form" class="textformlabel" >Race: </label>{{form.race}}</div>
+        <div class="textdiv" ><label for="classes-form"  class="textformlabel" >Classes: </label>{{form.classes}}</div>
+        <div class="textdiv" ><label for="background-form"  class="textformlabel" >Background: </label>{{form.background}}</div>
+        <div class="textdiv" ><label for="alignment-form"  class="textformlabel" >Alignment: </label>{{form.alignment}}</div>
+        <div><img alt="dice" id="d20" src="../static/img/d20.webp"></div></div>
+    </section>
+    <section id="textboxes">
+        <div id="lvlhp" ><div class="number-div"><label for="hitpoints-form" class="atributes-label">Hitpoints: </label>{{form.hitpoints}}</div>
+        <div class="number-div"><label for="level-form" class="atributes-label">Level: </label>{{form.level}}</div>
+        <div id="savebtn"><button class="btn" name="save" value="{{char.id}}">Save</button></div>
+    {% if char %}
+    <button class="btn" name="delete" value="{{char.id}}">Delete Character</button>
+    {% endif %}
+</div>
+        <div class="textareadiv" ><label for="inventory-form" class="textarealabel" >Inventory: </label>{{form.inventory}}</div>
+        <div class="textareadiv" ><label for="description-form" class="textarealabel" >Description: </label>{{form.description}}</div>
+    </section>
+</article>
+    
+</form>
+</div>
+<script src="../static/script.js"></script>
+{% endblock %}

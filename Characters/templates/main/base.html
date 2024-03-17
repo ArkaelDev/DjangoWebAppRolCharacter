@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Rol Character Creator</title>
+     {% endif %}
+    {% load static %}
+    <link rel="icon" type="image/webp" href="../static/img/d20.webp">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Character sheets managment">
+</head>
+<body>
+    <header id="navbarheader">
+        <nav class="navbar">
+            <form id="myForm" action="/logout/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="param1" value="valor1">
+            </form>
+            <ul id="listnavbar">
+            <li class="itemnav">
+            <a class='navlink' href="{% url 'home-char' %}">
+            <svg class="icons"  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home" viewBox="2 2 20 20"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 12l-2 0l9 -9l9 9l-2 0"></path><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path></svg> Home</a>
+            <li class="itemnav">
+            <a class='navlink' href="{% url 'create-char' %}">
+            <svg class="icons" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-plus" viewBox="4 2 16 20"><path stroke="currentColor" d="M0 0h24v24H0z" fill="none"></path><path d="M14 3v4a1 1 0 0 0 1 1h4"></path><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path><path d="M12 11l0 6"></path><path d="M9 14l6 0"></path></svg> New Character</a>
+            <li class="itemnav">
+            <a class='navlink' href="{% url 'characters-char' %}">
+            <svg class="icons" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file" viewBox="4 2 16 20"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M14 3v4a1 1 0 0 0 1 1h4"></path><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path></svg> My Characters</a>
+            <li class="itemnav">
+            <a class='navlink' href="{% url 'allchar-char' %}">
+            <svg class="icons" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-files" viewBox="4 2 17 20"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M15 3v4a1 1 0 0 0 1 1h4"></path><path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z"></path><path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2"></path></svg> All Characters</a>
+            {% if user.is_authenticated %}
+            <li class="itemnav">
+            <a class='navlink' href="{% url 'logout-page' %}" onclick="document.getElementById('myForm').submit(); return false;">
+            <svg class="icons" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-logout" viewBox="2 3 20 18"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path><path d="M9 12h12l-3 -3"></path><path d="M18 15l3 -3"></path></svg> Logout</a>
+            {% else %}
+            <li class="itemnav"><a class='navlink' href="{% url 'login-page' %}">
+            <svg class="icons" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-login" viewBox="3 3 19 18"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M15 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path><path d="M21 12h-13l3 -3"></path><path d="M11 15l-3 -3"></path></svg> Login</a>
+            <li class="itemnav"><a class='navlink' href="{% url 'register' %}">
+            <svg class="icons" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user-plus" viewBox="5 2 18 21"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path><path d="M16 19h6"></path><path d="M19 16v6"></path><path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path></svg> Sign up</a>
+            {% endif %}
+            </ul>
+        </nav>
+    </header>
+        {% block content %}
+        {% endblock %}
+        <footer id="footer">
+            <ul id="footerlist">
+            <li class="itemfooter"><a href="https://github.com/ArkaelDev" target="_blank" rel="noopener noreferrer nofollow" class='navlink'>Github</a></li>
+            <li class="itemfooter"><a class='navlink'>Created in 2024</a></li>
+            <li class="itemfooter"><a href="{% url 'contrib' %}" class='navlink'>Contributors</a></li>
+        </ul></footer>
+</body>
+</html>
