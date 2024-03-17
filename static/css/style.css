@@ -75,21 +75,24 @@ body{
 }
 /* character view*/
 .card-name{
-    width: 150px;
+    width: 230px;
     height: 25px;
     position: relative;
     float: right;
     border-radius: 5px;
     background: #22333B;
     margin-right: 10px;
+    text-align: center;
   }
 .cardimg{
     position: relative;
     float: left;
+    width: 200px;
+    height: 200px;
 }
 .card-description{
-    width: 150px;
-    height: 65px;
+    width: 230px;
+    height: 160px;
     position: relative;
     float: right;
     border-radius: 5px;
@@ -101,14 +104,14 @@ body{
     display: flex;
     flex-wrap: wrap;
     margin: 30px auto;
-    width: 1300px;
+    width: 1510px;
     gap: 10px;
 }
 .card{
-    width: 300px;
+    width: 480px;
     background-color: #F2F4F3;
     box-shadow: -2px 6px 20px 4px rgba(0,0,0,0.1);
-    height: 120px;
+    height: 240px;
     margin: 8px;
     padding: 10px;
     box-sizing: border-box;
@@ -128,24 +131,32 @@ body{
     font-weight: 700;
     padding: 1px;
     padding-inline: 5px;
+    margin: 15px;
+}
+.cardtextname{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 1px;
+    padding-inline: 5px;
     margin: 0;
 }
 #arrow{
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 70px;
+    font-weight: 600;
     position: relative;
-    bottom: 15px;
-    left: 110px;
+    bottom: 50px;
+    left: 150px;
     color: #FAF2A1;
     transition: color 0.3s ease;
 }
 /*Create form*/
 .number-form{
-    width: 42px;
-    height: 50px;
+    width: 60px;
+    height: 70px;
     display: block;
     text-align: center;
-    font-size: 20px;
+    font-size: 32px;
     border-color: white;
     border-style: hidden;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -161,8 +172,8 @@ body{
 .number-div{
     border: solid;
     background: white;
-    width: 50px;
-    height: 60px;
+    width: 80px;
+    height: 90px;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -172,7 +183,7 @@ body{
     background-color: #22333B;
 }
 .atributes-label{
-    font-size: 9px;
+    font-size: 12px;
     color: #FAF2A1;
     margin-bottom: 1px;
 }
@@ -189,13 +200,13 @@ body{
     background-color: #F2F4F3;
     margin: 30px auto;
     border-radius: 5px;
-    width: 970px;
+    width: 1300px;
     border: 1px solid #ccc;
     box-shadow: 2px 2px 10px #ccc;
     
 }
 .text-form{
-    width: 131px;
+    width: 308px;
     border: solid 1px;
     height: 24px;
     position: relative;
@@ -207,7 +218,7 @@ body{
 .textformlabel{
     background-color: #22333B;
     color: #FAF2A1;
-    width: 140px;
+    width: 325px;
     height: 30px;
     padding-left: 15px;
     padding-top: 3px;
@@ -219,37 +230,31 @@ body{
     margin-bottom: 27px;
     margin-top: 5px;
     flex-wrap: wrap;
-    width: 204px;
-    margin-right: 20px;
+    width: 340px;
+    margin-right: 21px;
 }
 .textareadiv{
     height: 150px;
     display: flex;
     margin-inline: 5px;
-    margin-top: 1px;
-    margin-bottom: 10px;
+    margin-top: 4px;
+    margin-bottom: 15px;
     flex-wrap: wrap;
-}
-#name-form{
-    width: 150px;
-}
-#namelabel{
-    width: 150px;
 }
 .textarealabel{
     background-color: #22333B;
     color: #FAF2A1;
-    width: 300px;
+    width: 430px;
     height: 100px;
     padding-left: 15px;
     padding-top: 3px;
 }
 .textarea-form{
-    min-width: 300px;
-    max-width: 300px;
+    min-width: 425px;
+    max-width: 425px;
     border: solid 1px;
-    min-height: 110px;
-    max-height: 110px;
+    min-height: 115px;
+    max-height: 115px;
     position: relative;
     left: 30px;
     bottom: 78px;
@@ -259,57 +264,41 @@ body{
 #text{
     display: flex;
     flex-wrap: wrap;
-    width: 450px;
+    width: 621px;
     height: 50px;
     margin: 20px;
 
 }
-#textdiv{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
 #textboxes{
-    width: 400px;
+    width: 460px;
     margin: 20px;
     margin-bottom: 10px;
 }
-#othertext{
+#textdiv{
     display: flex;
-    width: 450px;
+    width: 400px;
     flex-wrap: wrap;
     justify-content: center;
 }
 #lvlhp{
     display: flex;
-    margin-bottom: 85px;
-    gap: 3px;
-}
-#droparea{
-    width: 100px;
-    height: 100px;
-    border-radius: 20px;
-    display: block;
-    margin-right: 60px;
-    margin-bottom: 60px;
-    margin-top: 4px;
+    margin-top: 129px;
+    gap: 251px;
 }
 #imageview{
     display: flex;
     align-items: center;
-    text-align: center;
-    width: 100px;
-    height: 100px;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
     border-radius: 20px;
     font-size: 12px;
     color: #FAF2A1;
     background-color: #22333B;
-    margin-right: 60px;
-    margin-bottom: 32px;
 }
 .portrait-form{
-    width: 100px;
-    height: 24px;
+    width: 150px;
+    height: 32px;
     position: relative;
     padding-left: 5px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -318,8 +307,7 @@ body{
     color: #FAF2A1;
     border: solid 2px;
     border-radius: 20px;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    margin: 4px 20px;
 }
 .btn:hover{
     cursor: pointer;
@@ -333,7 +321,7 @@ body{
     color: #FAF2A1;
     border: solid 4px;
     border-radius: 20px;
-    width: 80px;
+    width: 130px;
     height: 50px;
     margin-top: 15px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -343,13 +331,9 @@ body{
     padding-inline: 6px;
     margin-left: 4px;
 }
-.fake{
-    width: 80px;
-    height: 50px;
-}
 #d20{
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     transition: filter 0.3s ease;
 
 }
@@ -360,13 +344,13 @@ body{
     display: flex;
     align-items: center;
     text-align: center;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-radius: 20px;
 }
 .text-display{
     display: flex;
-    width: 131px;
+    width: 308px;
     border: solid 1px;
     height: 24px;
     position: relative;
@@ -380,9 +364,9 @@ body{
 }
 .textarea-display{
     display: flex;
-    width: 300px;
+    width: 425px;
     border: solid 1px;
-    height: 110px;
+    height: 115px;
     position: relative;
     bottom: 78px;
     padding-left: 5px;
@@ -394,9 +378,8 @@ body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .number-display{
-    width: 42px;
-    height: 50px;
-    display: block;
+    width: 62px;
+    height: 72px;
     text-align: center;
     font-size: 20px;
     border-color: white;
@@ -407,9 +390,11 @@ body{
     display: flex;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-#buttons{
+.buttons{
     display: flex;
     gap: 3px;
+    justify-content: right;
+    margin-top: 36px;
 }
 #divportrait{
     width: 100px;
