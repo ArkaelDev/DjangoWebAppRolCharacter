@@ -125,6 +125,9 @@ body{
 .card:hover{
     border-color: #B11F0C;
 }
+.card:hover #arrow{
+    color: #B11F0C;
+}
 .cardtext{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px;
@@ -414,7 +417,7 @@ body{
     border-radius: 4px;
     box-sizing: border-box;
 }
-#id_password{
+#id_password {
     width: 100%;
     padding: 12px 20px;
     font-size: 16px;
@@ -474,7 +477,6 @@ body{
     font-size: 24px;
     color: black;
 }
-  
 .form-group {
     margin-bottom: 15px;
 }
@@ -537,4 +539,41 @@ body{
     height: 300px;
     border-radius: 5%;
     background-color: rgb(197, 197, 197);
+}
+/* search bar*/
+#search{
+    width: 150px;
+    height: 20px;
+    background-color: #F2F4F3;
+    border: 0;
+    margin: auto;
+}
+#search:focus-visible{
+    border: none;
+    outline: none;
+}
+.searchbar{
+    background-color: #F2F4F3;
+    border-radius: 20px;
+    border: solid 1px #22333B;
+    width: 200px;
+    height: 30px;
+    justify-content: center;
+    display: flex;
+    position: relative;
+    left: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+::-webkit-search-cancel-button{
+    display: none;
+}
+#searchicon{
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    margin-right: 10px;
+}
+#charlistdiv{
+    margin: 30px auto;
+    width: 1510px;
 }

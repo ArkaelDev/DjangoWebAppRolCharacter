@@ -1,6 +1,11 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
+<div id="charlistdiv">
+<div class="searchbar">
+    <input type="search" id="search" placeholder="Search for a character">
+    <svg id="searchicon" width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
+</div>
 <ul class="charlist">
     {% for char in char %}
     <a class="card" href='/{{char.id}}'>
@@ -9,9 +14,11 @@
             {% else %}
             <img class="cardimg" src=../static/img/user-circle.svg>
             {% endif %}
-            <div class="card-name"><p class="cardtextname">{{char.name}}</p></div>
-            <div class="card-description"><p class="cardtext">{{char.race}}</p> <p class="cardtext">{{char.classes}}</p> <p class="cardtext">Level: {{char.level}}</p><icon id="arrow">→</icon></div>
+            <div class="card-name"><p charname class="cardtextname">{{char.name}}</p></div>
+            <div class="card-description"><p race class="cardtext">{{char.race}}</p> <p classes  class="cardtext">{{char.classes}}</p> <p class="cardtext">Level: {{char.level}}</p><icon id="arrow">→</icon></div>
 </a>
     {% endfor %}
 </ul>
+</div>
+<script src="../static/search.js"></script>
 {% endblock %}
