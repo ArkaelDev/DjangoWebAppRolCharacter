@@ -11,7 +11,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import os
+from dotenv import load_dotenv
+import os 
+load_dotenv()
+GITHUB_KEY = os.getenv('GITHUB_SECRET_KEY')
+DISCORD_KEY = os.getenv('DISCORD_SECRET_KEY')
+GOOGLE_KEY = os.getenv('GOOGLE_SECRET_KEY')
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +34,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -38,10 +45,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'Characters',
     'register',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.discord',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'CRUDRolChar.urls'
@@ -58,7 +72,9 @@ ROOT_URLCONF = 'CRUDRolChar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,6 +119,37 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'APP': {
+            'client_id': 'a2c7d7a0e19ddc357afd',
+            'secret': GITHUB_KEY,
+            'key': ''
+        }
+    },
+    'discord': {
+        'APP': {
+            'client_id': '1219810811116257301',
+            'secret': DISCORD_KEY,
+            'key': ''
+        }
+    },
+    'google': {
+        'APP': {
+            'client_id': '140027414475-no0g0248plskdu4huccojjer7si79or1.apps.googleusercontent.com',
+            'secret': GOOGLE_KEY,
+            'key': ''
+        }
+    }
+}
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
