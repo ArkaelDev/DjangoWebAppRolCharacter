@@ -4,6 +4,12 @@
 <form class='form-group' method='post' enctype="multipart/form-data" action="{% url 'create-char' %}">
     {% csrf_token %}
     <article id="create-char">
+        {% if not request.user.is_authenticated %}
+    <div id="infodiv">Keep in mind: You may always create a Character without beign logged.
+        But that Character wouldn't be yours, therefore you may not edit or delete it.
+        Don't worry, you can always copy it later.
+    </div>
+    {% endif %}
     <section id="atributes">
         <div class="number-div"><label for="strength-form" class="atributes-label">STRENGTH</label>{{form.strength}}</div>
         <div class="number-div"><label for="dexterity-form" class="atributes-label">DEXTERITY</label>{{form.dexterity}}</div>

@@ -27,4 +27,6 @@ urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('logout-page/', v.logout_view, name='logout-page'),
     path('login-view', v.login_view, name='login-page'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('discord/auth', v.discord_login_view, name='discord-auth'),
+    path('accounts/', include('allauth.urls')),
+]

@@ -8,54 +8,52 @@ def home(request):
     return render(request, 'main/home.html',{'title':'Home'})
 
 def create(request):
-    if request.user.is_authenticated:
-        if request.method == 'POST':
-            if 'save' in request.POST:
-                pk = request.POST.get('save')
-                if pk:
-                    char = models.Character.objects.get(id=pk)
-                    form = Character(request.POST, request.FILES, instance=char)
-                else:
-                    form = Character(request.POST, request.FILES)
-                if form.is_valid():
-                    char = form.save()
+    if request.method == 'POST':
+        if 'save' in request.POST:
+            pk = request.POST.get('save')
+            if pk:
+                char = models.Character.objects.get(id=pk)
+                form = Character(request.POST, request.FILES, instance=char)
+            else:
+                form = Character(request.POST, request.FILES)
+            if form.is_valid():
+                char = form.save()
+                if request.user.is_authenticated:
                     request.user.character.add(char)
-                    return render(request, 'main/char.html',{'title':char.name,'char':char})
-                else:
-                    for field_name, error_messages in form.errors.items():
-                     print(f"Error en el campo {field_name}: {error_messages}")
-            elif 'delete' in request.POST:
-                pk = request.POST.get('delete')
-                try:
-                    char1 = models.Character.objects.get(id=pk)
-                    char1.delete()
-                    char = models.Character.objects.all()
-                    return render(request, 'main/chars.html',{'title':'Characters', 'char':char})
-                except models.Character.DoesNotExist:
-                    return HttpResponse("Character does not exist or could not be found.")
-            elif 'edit' in request.POST:
-                pk = request.POST.get('edit')
-                try:
-                    char = models.Character.objects.get(id=pk)
-                    form = Character(instance=char)
-                    return render(request, 'main/create.html',{'title':'Create Character', 'form':form,'char':char})
-                except models.Character.DoesNotExist:
-                    return HttpResponse("Character does not exist or could not be found.")
-            elif 'copy' in request.POST:
-                pk = request.POST.get('copy')
-                try:
-                    char = models.Character.objects.get(id=pk)
-                    form = Character(instance=char)
-                    if form.is_valid():
-                        char_copy = form.save()
-                        request.user.character.add(char_copy)
-                except models.Character.DoesNotExist:
-                    return HttpResponse("Character does not exist or could not be found.")
-        else:
-            form = Character()
-        return render(request, 'main/create.html',{'title':'Create Character', 'form':form})
+                return render(request, 'main/char.html',{'title':char.name,'char':char})
+            else:
+                for field_name, error_messages in form.errors.items():
+                    print(f"Error en el campo {field_name}: {error_messages}")
+        elif 'delete' in request.POST:
+            pk = request.POST.get('delete')
+            try:
+                char1 = models.Character.objects.get(id=pk)
+                char1.delete()
+                char = models.Character.objects.all()
+                return render(request, 'main/chars.html',{'title':'Characters', 'char':char})
+            except models.Character.DoesNotExist:
+                return HttpResponse("Character does not exist or could not be found.")
+        elif 'edit' in request.POST:
+            pk = request.POST.get('edit')
+            try:
+                char = models.Character.objects.get(id=pk)
+                form = Character(instance=char)
+                return render(request, 'main/create.html',{'title':'Create Character', 'form':form,'char':char})
+            except models.Character.DoesNotExist:
+                return HttpResponse("Character does not exist or could not be found.")
+        elif 'copy' in request.POST:
+            pk = request.POST.get('copy')
+            try:
+                char = models.Character.objects.get(id=pk)
+                form = Character(instance=char)
+                if form.is_valid():
+                    char_copy = form.save()
+                    request.user.character.add(char_copy)
+            except models.Character.DoesNotExist:
+                return HttpResponse("Character does not exist or could not be found.")
     else:
-        return render(request, 'main/ask.html',{'title':'Info'})
+        form = Character()
+    return render(request, 'main/create.html',{'title':'Create Character', 'form':form})
 
 def characters(request):
     if request.user.is_authenticated:
